@@ -11,8 +11,12 @@ from selenium.webdriver.support import expected_conditions as EC
 
 class GoTo:
     def __init__(self):
-        s = Service(ChromeDriverManager().install())
-        self.browser = webdriver.Chrome(service=s)
+        options = webdriver.ChromeOptions()
+        options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--incognito')
+        options.add_argument('--headless')
+        service = Service(ChromeDriverManager().install())
+        self.browser = webdriver.Chrome(service=service, options=options)
 
     def getUrl(self, url):
         driver = self.browser
