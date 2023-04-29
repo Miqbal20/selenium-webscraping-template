@@ -69,6 +69,8 @@ class Scrape:
             }
             itemList.append(saveItem)
 
+        print('Saving Data Successfull')
+
         # Json Result
         with open('result/data.json', 'w+') as json_data:
             json.dump(itemList, json_data)
