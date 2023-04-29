@@ -76,12 +76,14 @@ class Scrape:
             json.dump(itemList, json_data)
             print('data.json Created')
 
-            # Excel Result
+        # Excel Result
         df = pd.DataFrame(itemList)
         df.to_csv('result/data.csv', index=False)
         print('data.csv Created')
         df.to_excel('result/data.xlsx', index=False)
         print('data.xlsx Created')
+
+        time.sleep(3)
 
 
 if __name__ == "__main__":
