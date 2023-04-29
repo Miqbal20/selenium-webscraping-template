@@ -84,3 +84,5 @@ class Scrape:
 
 if __name__ == "__main__":
     Scrape().start('https://www.saucedemo.com/')
+
+# Script by Miqbal20
