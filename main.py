@@ -83,8 +83,6 @@ class Scrape:
         df.to_excel('result/data.xlsx', index=False)
         print('data.xlsx Created')
 
-        time.sleep(3)
-
 
 if __name__ == "__main__":
     Scrape().start('https://www.saucedemo.com/')
