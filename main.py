@@ -19,7 +19,13 @@ class Scrape:
     def __init__(self):
         options = webdriver.ChromeOptions()
         options.add_argument('--ignore-certificate-errors')
+        # Mode Pribadi
         options.add_argument('--incognito')
+
+        # Profile
+        options.add_argument("user-data-dir=C:/Users/Rex/AppData/Local/Google/Chrome/User Data")
+        options.add_argument('--profile-directory=Profile 1')
+
         service = Service(ChromeDriverManager().install())
         self.browser = webdriver.Chrome(service=service, options=options)
 
@@ -62,7 +68,7 @@ class Scrape:
             image = item.findNext('img', 'inventory_item_img')['src']
 
             saveItem = {
-                'title' : title,
+                'title': title,
                 'desc': desc,
                 'price': price,
                 'image': f'https://www.saucedemo.com{image}',
@@ -76,10 +82,11 @@ class Scrape:
             json.dump(itemList, json_data)
             print('data.json Created')
 
-        # Excel Result
+        # CSV Result
         df = pd.DataFrame(itemList)
         df.to_csv('result/data.csv', index=False)
         print('data.csv Created')
+        # Excel Result
         df.to_excel('result/data.xlsx', index=False)
         print('data.xlsx Created')
 
